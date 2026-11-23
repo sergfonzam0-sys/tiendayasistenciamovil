@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito de Compras | Desvare</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <img src="img/desvare/logo.jpeg" alt="Logo Desvare">
+        <div>DES<span>VARE</span></div>
+      </a>
+      <button class="hamburger" id="hamburger-btn" aria-label="Menú">☰</button>
+      <nav class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link">Inicio &amp; Tienda</a>
+        <a href="nosotros.html" class="nav-link">Nosotros</a>
+        <a href="servicios.html" class="nav-link">Servicios &amp; Planes</a>
+        <a href="contacto.html" class="nav-link">Contacto</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="carrito.html" class="cart-btn">🛒 Carrito <span class="cart-badge">0</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:2rem;">
+          <div>
+            <h1 style="font-size:2rem; color:var(--bg-dark);">Tu Carrito de Compras</h1>
+            <p style="color:var(--text-muted);">Revisa tus repuestos o servicios seleccionados y finaliza tu pedido.</p>
+          </div>
+          <button class="btn btn-dark btn-sm" onclick="clearCart()">Vaciar Carrito</button>
+        </div>
+
+        <div class="cart-layout">
+          <div>
+            <div id="cart-items-list"></div>
+          </div>
+
+          <aside class="summary-box">
+            <h3 style="margin-bottom:1rem; font-size:1.25rem;">Resumen de Compra</h3>
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span id="summary-subtotal">$0</span>
+            </div>
+            <div class="summary-row">
+              <span>IVA (19%)</span>
+              <span id="summary-iva">$0</span>
+            </div>
+            <div class="summary-row">
+              <span>Envío / Desplazamiento</span>
+              <span style="color:var(--success); font-weight:700;">Gratis en Barranquilla</span>
+            </div>
+            <div class="summary-row total">
+              <span>Total a Pagar</span>
+              <span id="summary-total" style="color:var(--primary);">$0</span>
+            </div>
+
+            <div id="checkout-form-section" style="margin-top:1.5rem; padding-top:1.5rem; border-top:2px solid var(--border-color);">
+              <h4 style="margin-bottom:1rem;">Datos de Entrega / Checkout</h4>
+              <form id="checkout-form" novalidate>
+                <div class="form-group">
+                  <label for="chk-nombre">Nombre Completo *</label>
+                  <input type="text" id="chk-nombre" class="form-control" placeholder="Ej. Andrés Pérez">
+                  <span class="error-msg">Ingresa tu nombre completo.</span>
+                </div>
+                <div class="form-group">
+                  <label for="chk-telefono">Teléfono / WhatsApp *</label>
+                  <input type="tel" id="chk-telefono" class="form-control" placeholder="Ej. 300 123 4567">
+                  <span class="error-msg">Ingresa un teléfono de contacto.</span>
+                </div>
+                <div class="form-group">
+                  <label for="chk-email">Tu Correo Electrónico (opcional)</label>
+                  <input type="email" id="chk-email" class="form-control" placeholder="Ej. cliente@correo.com">
+                </div>
+                <div class="form-group">
+                  <label for="chk-direccion">Dirección o Punto de Ubicación *</label>
+                  <input type="text" id="chk-direccion" class="form-control" placeholder="Ej. Cra 43 # 72-15, Barranquilla">
+                  <span class="error-msg">Ingresa la dirección de entrega o desvare.</span>
+                </div>
+                <div class="form-group">
+                  <label for="chk-pago">Método de Pago</label>
+                  <select id="chk-pago" class="form-control">
+                    <option value="Nequi / Daviplata">Nequi / Daviplata</option>
+                    <option value="Tarjeta Débito / Crédito (PSE)">Tarjeta Débito / Crédito (PSE)</option>
+                    <option value="Efectivo Contra Entrega">Efectivo Contra Entrega</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%; font-size:1rem;">Confirmar Pedido</button>
+              </form>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-backdrop" id="order-modal">
+    <div class="modal-card" id="order-modal-body"></div>
+  </div>
+
+  <footer>
+    <div class="container footer-bottom">© 2026 Desvare Taller Móvil Express — Barranquilla, Colombia.</div>
+  </footer>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desvare | Tienda y Asistencia Móvil para Motos en Barranquilla</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="top-alert">🚨 Asistencia Mecánica Móvil 24/7 en Barranquilla — Línea Directa: 304 698 9855</div>
+
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <img src="img/desvare/logo.jpeg" alt="Logo Desvare">
+        <div>DES<span>VARE</span></div>
+      </a>
+      <button class="hamburger" id="hamburger-btn" aria-label="Menú">☰</button>
+      <nav class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link active">Inicio &amp; Tienda</a>
+        <a href="nosotros.html" class="nav-link">Nosotros</a>
+        <a href="servicios.html" class="nav-link">Servicios &amp; Planes</a>
+        <a href="contacto.html" class="nav-link">Contacto</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="carrito.html" class="cart-btn">🛒 Carrito <span class="cart-badge">0</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="hero-badge">Plataforma Digital de Asistencia &amp; Repuestos</span>
+          <h1>Llegamos donde tú estás en <span>Barranquilla</span></h1>
+          <p>Conectamos a los motociclistas con el taller móvil más cercano y te llevamos repuestos, lubricantes y kits de emergencia directamente a tu ubicación.</p>
+          <div class="hero-buttons">
+            <a href="#catalogo" class="btn btn-primary">Ver Catálogo de Productos</a>
+            <a href="servicios.html" class="btn btn-outline">Planes de Afiliación</a>
+          </div>
+        </div>
+        <div class="hero-image-card">
+          <img src="img/desvare/logo.jpeg" alt="Desvare Taller Móvil para Motocicletas">
+        </div>
+      </div>
+    </section>
+
+        <!-- Sección Carrusel Automático y Descripción -->
+    <section class="section carrusel-section" style="padding-bottom: 1rem;">
+      <div class="container">
+        <div class="carrusel-container">
+          <div class="carrusel-slide">
+            <img src="img/Carrusel/2 Desvare.webp" alt="Asistencia en moto Desvare" class="carrusel-img active">
+            <img src="img/Carrusel/1 desvare.png" alt="Taller móvil Desvare" class="carrusel-img">
+            <img src="img/Carrusel/3 desvare.webp" alt="Repuestos y servicio Desvare" class="carrusel-img">
+            <img src="img/Carrusel/4 desvare.jpg" alt="Motociclistas Desvare" class="carrusel-img">
+          </div>
+          <div class="carrusel-dots" id="carrusel-dots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+            <span class="dot" data-index="3"></span>
+          </div>
+        </div>
+        <div class="desvare-intro-box">
+          <p><strong>DESVARE</strong> Es una plataforma de servicios y comercio electrónico que conecta a los usuarios de motocicletas con una red de talleres y profesionales mecánicos disponibles en su zona. Cuando el motociclista lo necesita, encuentra aquí la solución para su moto: puede solicitar asistencia en el momento, agendar mantenimiento y comprar repuestos, lubricantes y servicios directamente desde la plataforma. DESVARE une la oferta de talleres con la demanda de los conductores, asegurando atención oportuna, confiable y cercana.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="catalogo">
+      <div class="container">
+        <div class="section-header">
+          <h2>Catálogo de Repuestos, Insumos y Asistencia</h2>
+          <p>Selecciona los productos o servicios que necesitas para tu motocicleta y agrégalos a tu carrito de compras.</p>
+        </div>
+
+        <div class="catalog-toolbar">
+          <div class="search-box">
+            <input type="text" id="search-input" placeholder="🔍 Buscar aceite, batería, kit de arrastre, asistencia...">
+          </div>
+          <div class="filter-pills">
+            <button class="filter-btn active" data-category="Todos">Todos (12)</button>
+            <button class="filter-btn" data-category="Servicios">Servicios</button>
+            <button class="filter-btn" data-category="Lubricantes">Lubricantes</button>
+            <button class="filter-btn" data-category="Repuestos">Repuestos</button>
+            <button class="filter-btn" data-category="Eléctrico">Eléctrico</button>
+            <button class="filter-btn" data-category="Frenos y Llantas">Frenos y Llantas</button>
+            <button class="filter-btn" data-category="Emergencia">Emergencia</button>
+          </div>
+        </div>
+
+        <div class="products-grid" id="products-grid"></div>
+      </div>
+    </section>
+
+    <section class="section" style="background:#fff; border-top:1px solid var(--border-color);">
+      <div class="container cards-grid-2" style="align-items:center;">
+        <div>
+          <h2 style="font-size:1.8rem; margin-bottom:1rem;">¿Cómo funciona Desvare en la vía?</h2>
+          <ul class="styled-list">
+            <li><strong>Reporta la falla:</strong> Desde nuestra web o WhatsApp describes qué ocurre con tu moto y tu ubicación.</li>
+            <li><strong>Conexión inmediata:</strong> Ubicamos al técnico certificado más cercano disponible.</li>
+            <li><strong>Reparación en el sitio:</strong> El taller móvil llega hasta donde estás sin necesidad de grúa.</li>
+            <li><strong>Precios transparentes:</strong> Conoces el valor del servicio y repuestos antes de aprobar.</li>
+          </ul>
+        </div>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/WwdZrLHHoeY" title="Desvare Asistencia Móvil" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-col">
+        <h4>DESVARE</h4>
+        <p>Plataforma digital líder en asistencia mecánica móvil, repuestos y mantenimiento para motocicletas en Barranquilla y la región Caribe.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html">Inicio &amp; Catálogo</a></li>
+          <li><a href="nosotros.html">Nuestra Historia, Misión y Visión</a></li>
+          <li><a href="servicios.html">Planes y Seguridad Vial</a></li>
+          <li><a href="carrito.html">Carrito de Compras</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto Barranquilla</h4>
+        <p>📍 Calle 34 No. 43-31, Barranquilla, Atlántico</p>
+        <p>📱 WhatsApp: +57 304 698 9855 / +57 312 219 5227</p>
+        <p>✉️ Desvare@gmail.com | NIT: 8901020181</p>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Desvare Taller Móvil Express — Todos los derechos reservados.</div>
+  </footer>
+
+  
+  <!-- Modal de Selección de Marca, Tamaño/Referencia y Cantidad -->
+  <div class="modal-backdrop" id="product-modal">
+    <div class="modal-card">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; margin-bottom:1rem;">
+        <div style="display:flex; gap:1rem; align-items:center;">
+          <img id="pmodal-img" src="" alt="Producto" style="width:76px; height:76px; object-fit:cover; border-radius:10px; border:1px solid var(--border-color);">
+          <div>
+            <span id="pmodal-cat" style="font-size:0.75rem; font-weight:700; color:var(--primary); text-transform:uppercase;"></span>
+            <h3 id="pmodal-title" style="font-size:1.18rem; color:var(--bg-dark); line-height:1.25;"></h3>
+          </div>
+        </div>
+        <button type="button" onclick="closeProductModal()" aria-label="Cerrar" style="background:#f3f4f6; border:none; width:32px; height:32px; border-radius:50%; font-size:1.2rem; font-weight:700; cursor:pointer; color:var(--text-main);">&times;</button>
+      </div>
+
+      <p id="pmodal-desc" style="font-size:0.9rem; color:var(--text-muted); margin-bottom:1.15rem;"></p>
+
+      <div id="pmodal-variants-wrap">
+        <div class="form-group">
+          <label for="pmodal-marca">1. Marca de tu motocicleta *</label>
+          <select id="pmodal-marca" class="form-control" onchange="updateProductModalSizes()"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="pmodal-tamano">2. Tamaño / Referencia compatible *</label>
+          <select id="pmodal-tamano" class="form-control" onchange="updateProductModalPrice()"></select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="pmodal-cantidad">3. Cantidad</label>
+        <div style="display:flex; align-items:center; gap:0.75rem;">
+          <button type="button" class="qty-btn" onclick="stepModalQty(-1)">−</button>
+          <input type="number" id="pmodal-cantidad" class="form-control" value="1" min="1" max="50" style="width:85px; text-align:center; font-weight:700;" oninput="updateProductModalPrice()">
+          <button type="button" class="qty-btn" onclick="stepModalQty(1)">+</button>
+        </div>
+      </div>
+
+      <div style="background:#f9fafb; border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:0.95rem 1rem; margin:1.1rem 0;">
+        <div style="display:flex; justify-content:space-between; font-size:0.9rem; color:var(--text-muted); margin-bottom:0.35rem;">
+          <span>Valor unitario:</span>
+          <strong id="pmodal-unit-price" style="color:var(--text-main);">$0</strong>
+        </div>
+        <div style="display:flex; justify-content:space-between; font-size:1.15rem; font-weight:800; color:var(--bg-dark);">
+          <span>Subtotal:</span>
+          <span id="pmodal-total-price" style="color:var(--primary);">$0</span>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:0.75rem;">
+        <button type="button" class="btn btn-dark" style="flex:1;" onclick="closeProductModal()">Cancelar</button>
+        <button type="button" class="btn btn-primary" style="flex:2;" onclick="confirmAddToCartFromModal()">🛒 Agregar al Carrito</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

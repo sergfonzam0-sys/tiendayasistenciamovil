@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servicios y Recomendaciones | Desvare</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <img src="img/desvare/logo.jpeg" alt="Logo Desvare">
+        <div>DES<span>VARE</span></div>
+      </a>
+      <button class="hamburger" id="hamburger-btn" aria-label="Menú">☰</button>
+      <nav class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link">Inicio &amp; Tienda</a>
+        <a href="nosotros.html" class="nav-link">Nosotros</a>
+        <a href="servicios.html" class="nav-link active">Servicios &amp; Planes</a>
+        <a href="contacto.html" class="nav-link">Contacto</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="carrito.html" class="cart-btn">🛒 Carrito <span class="cart-badge">0</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" style="padding:2.5rem 0;">
+      <div class="container">
+        <span class="hero-badge">Seguridad &amp; Prevención</span>
+        <h1>Afíliate y conduce con <span>respaldo total</span></h1>
+        <p>Verificaciones de seguridad certificadas, tarifas preferenciales y guía preventiva para tu motocicleta.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cards-grid-3" style="margin-bottom:3rem;">
+          <div class="info-card">
+            <h3>1. Técnicos Verificados</h3>
+            <p>Todo nuestro personal cuenta con identidad registrada, certificación mecánica y antecedentes verificados.</p>
+          </div>
+          <div class="info-card">
+            <h3>2. Prioridad 24/7</h3>
+            <p>Los usuarios afiliados reciben atención preferencial y sin costo de desplazamiento en el área metropolitana.</p>
+          </div>
+          <div class="info-card">
+            <h3>3. Garantía en Repuestos</h3>
+            <p>Cada reparación y repuesto instalado cuenta con respaldo directo de Desvare Taller Móvil Express.</p>
+          </div>
+        </div>
+
+        <div class="section-header">
+          <h2>Tabla de Mantenimiento Preventivo Sugerido</h2>
+          <p>Evita quedarte varado siguiendo estas frecuencias de revisión.</p>
+        </div>
+
+        <div class="responsive-table-wrap" style="margin-bottom:3rem;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Componente</th>
+                <th>Frecuencia Sugerida</th>
+                <th>Importancia en la Vía</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Aceite de motor</strong></td>
+                <td>Cada 2.000 – 3.000 km</td>
+                <td>Protege las piezas internas y evita recalentamiento del motor.</td>
+              </tr>
+              <tr>
+                <td><strong>Frenos (Pastillas/Bandas)</strong></td>
+                <td>Cada mes o antes de viajar</td>
+                <td>Garantiza distancia de frenado segura ante imprevistos.</td>
+              </tr>
+              <tr>
+                <td><strong>Presión de llantas</strong></td>
+                <td>Semanalmente</td>
+                <td>Previene derrapes, pinchazos y desgaste irregular.</td>
+              </tr>
+              <tr>
+                <td><strong>Cadena y lubricación</strong></td>
+                <td>Cada 500 km</td>
+                <td>Transmite correctamente la potencia y evita roturas en marcha.</td>
+              </tr>
+              <tr>
+                <td><strong>Batería y luces</strong></td>
+                <td>Cada 3 meses</td>
+                <td>Evita fallas eléctricas de encendido y mejora tu visibilidad.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="cards-grid-2" style="align-items:center;">
+          <div class="info-card">
+            <h3>¿Qué hacer si tu moto falla en la vía?</h3>
+            <ul class="styled-list">
+              <li>Oríllate en un lugar visible y seguro fuera del flujo vehicular.</li>
+              <li>Enciende las luces estacionarias o coloca señalización reflectiva.</li>
+              <li>No intentes reparaciones complejas sin herramienta adecuada.</li>
+              <li>Solicita tu servicio en nuestro catálogo o línea directa.</li>
+            </ul>
+            <div style="margin-top:1.25rem;">
+              <button class="btn btn-primary" onclick="addToCart(9)">Agregar Plan Afiliado Anual ($89.000)</button>
+            </div>
+          </div>
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/_ckcWtvlHO0" title="Recomendaciones Motociclistas" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-bottom">© 2026 Desvare Taller Móvil Express — Barranquilla, Colombia.</div>
+  </footer>
+  <script src="js/app.js"></script>
+</body>
+</html>

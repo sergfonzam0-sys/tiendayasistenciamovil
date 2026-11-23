@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto | Desvare Barranquilla</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <img src="img/desvare/logo.jpeg" alt="Logo Desvare">
+        <div>DES<span>VARE</span></div>
+      </a>
+      <button class="hamburger" id="hamburger-btn" aria-label="Menú">☰</button>
+      <nav class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link">Inicio &amp; Tienda</a>
+        <a href="nosotros.html" class="nav-link">Nosotros</a>
+        <a href="servicios.html" class="nav-link">Servicios &amp; Planes</a>
+        <a href="contacto.html" class="nav-link active">Contacto</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="carrito.html" class="cart-btn">🛒 Carrito <span class="cart-badge">0</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" style="padding:2.5rem 0;">
+      <div class="container">
+        <span class="hero-badge">Atención al Cliente</span>
+        <h1>Ubícanos para <span>apoyarte</span></h1>
+        <p>Central de operaciones en Barranquilla, Atlántico. Atención inmediata por WhatsApp y líneas telefónicas.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container cards-grid-2">
+        <div class="info-card">
+          <h3>Sede Principal Barranquilla</h3>
+          <ul class="styled-list" style="margin-top:1rem;">
+            <li><strong>Dirección:</strong> Calle 34 No. 43-31, Barranquilla, Atlántico</li>
+            <li><strong>Código Postal:</strong> 08001 | <strong>NIT:</strong> 8901020181</li>
+            <li><strong>Horario Administrativo:</strong> Lunes a viernes 8:00 a.m. – 4:00 p.m.</li>
+            <li><strong>Asistencia en Vía:</strong> 24 horas / 7 días</li>
+            <li><strong>WhatsApp Directo:</strong> +57 304 698 9855 / +57 312 219 5227</li>
+            <li><strong>Líneas Fijas:</strong> 195 / +57 605 4010205 / +57 605 3161400</li>
+            <li><strong>Correo:</strong> <a href="mailto:Desvare@gmail.com" style="color:var(--primary); font-weight:700;">Desvare@gmail.com</a></li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <h3>Envíanos tu consulta o cotización</h3>
+          <form id="contact-form" style="margin-top:1rem;">
+            <div class="form-group">
+              <label for="cnt-nombre">Nombre Completo *</label>
+              <input type="text" id="cnt-nombre" class="form-control" placeholder="Ej. Carlos Mendoza" required>
+            </div>
+            <div class="form-group">
+              <label for="cnt-email">Correo Electrónico *</label>
+              <input type="email" id="cnt-email" class="form-control" placeholder="correo@ejemplo.com" required>
+            </div>
+            <div class="form-group">
+              <label for="cnt-mensaje">Mensaje o Solicitud *</label>
+              <textarea id="cnt-mensaje" rows="4" class="form-control" placeholder="Indícanos el modelo de tu moto o el repuesto que buscas..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;">Enviar Mensaje</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="contact-logo-box"><img src="img/desvare/logo.jpeg" alt="Logo Desvare Taller Móvil"></div>
+  <br>
+
+  <footer>
+    <div class="container footer-bottom">© 2026 Desvare Taller Móvil Express — Barranquilla, Colombia.</div>
+  </footer>
+  <script src="js/app.js"></script>
+</body>
+</html>
