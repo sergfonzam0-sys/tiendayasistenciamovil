@@ -54,7 +54,7 @@
             </div>
             <div class="summary-row">
               <span>Envío / Desplazamiento</span>
-              <span style="color:var(--success); font-weight:700;">Gratis en Barranquilla</span>
+              <span id="summary-shipping" style="color:var(--success); font-weight:700;">Gratis en Barranquilla</span>
             </div>
             <div class="summary-row total">
               <span>Total a Pagar</span>
@@ -79,8 +79,13 @@
                   <input type="email" id="chk-email" class="form-control" placeholder="Ej. cliente@correo.com">
                 </div>
                 <div class="form-group">
+                  <label for="chk-ciudad">Ciudad de Envío *</label>
+                  <input type="text" id="chk-ciudad" class="form-control" placeholder="Ej. Barranquilla (Gratis) u otra ciudad">
+                  <span class="error-msg">Ingresa la ciudad de envío.</span>
+                </div>
+                <div class="form-group">
                   <label for="chk-direccion">Dirección o Punto de Ubicación *</label>
-                  <input type="text" id="chk-direccion" class="form-control" placeholder="Ej. Cra 43 # 72-15, Barranquilla">
+                  <input type="text" id="chk-direccion" class="form-control" placeholder="Ej. Cra 43 # 72-15">
                   <span class="error-msg">Ingresa la dirección de entrega o desvare.</span>
                 </div>
                 <div class="form-group">
