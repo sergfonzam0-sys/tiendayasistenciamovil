@@ -1,3 +1,4 @@
+
 const CATALOGO_DESVARE = [
   {
     id: 1,
@@ -496,6 +497,39 @@ function initCatalogFilters() {
 }
 
 /* ==================== LOGICA DEL CARRITO (carrito.html) ==================== */
+const COSTO_ENVIO_NACIONAL = 18000; // Tarifa por defecto para cualquier otra ciudad
+
+const TARIFAS_POR_CIUDAD = {
+  barranquilla: 0,
+  soledad: 8000,
+  "puerto colombia": 10000,
+  malambo: 10000,
+  cartagena: 15000,
+  "santa marta": 15000
+};
+
+function normalizarTexto(texto) {
+  return (texto || "")
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
+function calcularCostoEnvio() {
+  const ciudadInput = document.getElementById("chk-ciudad");
+  if (!ciudadInput) return 0;
+
+  const ciudad = normalizarTexto(ciudadInput.value);
+  if (ciudad === "") return 0;
+
+  if (Object.prototype.hasOwnProperty.call(TARIFAS_POR_CIUDAD, ciudad)) {
+    return TARIFAS_POR_CIUDAD[ciudad];
+  }
+
+  return COSTO_ENVIO_NACIONAL;
+}
+
 function renderCartPage() {
   const listContainer = document.getElementById("cart-items-list");
   if (!listContainer) return;
@@ -503,6 +537,7 @@ function renderCartPage() {
   const cart = getCart();
   const subtotalEl = document.getElementById("summary-subtotal");
   const ivaEl = document.getElementById("summary-iva");
+  const shippingEl = document.getElementById("summary-shipping");
   const totalEl = document.getElementById("summary-total");
   const checkoutSection = document.getElementById("checkout-form-section");
 
@@ -515,6 +550,10 @@ function renderCartPage() {
       </div>`;
     if (subtotalEl) subtotalEl.textContent = "$0";
     if (ivaEl) ivaEl.textContent = "$0";
+    if (shippingEl) {
+      shippingEl.textContent = "Gratis en Barranquilla";
+      shippingEl.style.color = "var(--success)";
+    }
     if (totalEl) totalEl.textContent = "$0";
     if (checkoutSection) checkoutSection.style.display = "none";
     return;
@@ -550,10 +589,20 @@ function renderCartPage() {
 
   const subtotal = cart.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
   const iva = Math.round(subtotal * 0.19);
-  const total = subtotal + iva;
+  const costoEnvio = calcularCostoEnvio();
+  const total = subtotal + iva + costoEnvio;
 
   if (subtotalEl) subtotalEl.textContent = formatCOP(subtotal);
   if (ivaEl) ivaEl.textContent = formatCOP(iva);
+  if (shippingEl) {
+    if (costoEnvio === 0) {
+      shippingEl.textContent = "Gratis en Barranquilla";
+      shippingEl.style.color = "var(--success)";
+    } else {
+      shippingEl.textContent = formatCOP(costoEnvio);
+      shippingEl.style.color = "var(--text-dark, #1e293b)";
+    }
+  }
   if (totalEl) totalEl.textContent = formatCOP(total);
 }
 
@@ -595,11 +644,13 @@ async function enviarPedidoPorCorreo(datosPedido) {
     Cliente: datosPedido.cliente,
     Telefono_WhatsApp: datosPedido.telefono,
     Correo_Cliente: datosPedido.emailCliente || "No proporcionado",
+    Ciudad_Envio: datosPedido.ciudad,
     Direccion_Ubicacion: datosPedido.direccion,
     Metodo_Pago: datosPedido.metodoPago,
     Productos_Solicitados: datosPedido.detalleTexto,
     Subtotal: datosPedido.subtotalFmt,
     IVA_19: datosPedido.ivaFmt,
+    Costo_Envio: datosPedido.envioFmt,
     Total_A_Pagar: datosPedido.totalFmt
   };
 
@@ -629,11 +680,13 @@ function construirEnlaceMailto(datosPedido) {
     `Cliente: ${datosPedido.cliente}\n` +
     `Teléfono / WhatsApp: ${datosPedido.telefono}\n` +
     `Correo Cliente: ${datosPedido.emailCliente || "No proporcionado"}\n` +
+    `Ciudad de Envío: ${datosPedido.ciudad}\n` +
     `Dirección / Ubicación: ${datosPedido.direccion}\n` +
     `Método de Pago: ${datosPedido.metodoPago}\n\n` +
     `DETALLE DEL PEDIDO:\n${datosPedido.detalleTexto}\n\n` +
     `Subtotal: ${datosPedido.subtotalFmt}\n` +
     `IVA (19%): ${datosPedido.ivaFmt}\n` +
+    `Envío: ${datosPedido.envioFmt}\n` +
     `TOTAL A PAGAR: ${datosPedido.totalFmt}`
   );
   return `mailto:${CORREO_PEDIDOS}?subject=${asunto}&body=${cuerpo}`;
@@ -643,6 +696,13 @@ function initCheckoutForm() {
   const form = document.getElementById("checkout-form");
   if (!form) return;
 
+  const ciudadLiveInput = document.getElementById("chk-ciudad");
+  if (ciudadLiveInput) {
+    ciudadLiveInput.addEventListener("input", () => {
+      renderCartPage();
+    });
+  }
+
   form.addEventListener("submit", async e => {
     e.preventDefault();
     const cart = getCart();
@@ -651,11 +711,12 @@ function initCheckoutForm() {
     const nombre = document.getElementById("chk-nombre");
     const telefono = document.getElementById("chk-telefono");
     const emailInput = document.getElementById("chk-email");
+    const ciudad = document.getElementById("chk-ciudad");
     const direccion = document.getElementById("chk-direccion");
     const pago = document.getElementById("chk-pago");
 
     let valid = true;
-    [nombre, telefono, direccion].forEach(input => {
+    [nombre, telefono, ciudad, direccion].forEach(input => {
       const err = input.nextElementSibling;
       if (!input.value.trim()) {
         input.classList.add("error");
@@ -678,7 +739,9 @@ function initCheckoutForm() {
 
     const subtotal = cart.reduce((acc, i) => acc + i.precio * i.cantidad, 0);
     const iva = Math.round(subtotal * 0.19);
-    const total = subtotal + iva;
+    const costoEnvio = calcularCostoEnvio();
+    const total = subtotal + iva + costoEnvio;
+    const envioFmt = costoEnvio === 0 ? "Gratis (Barranquilla)" : formatCOP(costoEnvio);
     const ordenId = "DSV-" + Math.floor(100000 + Math.random() * 900000);
 
     const resumenProductos = cart.map(i =>
@@ -694,11 +757,13 @@ function initCheckoutForm() {
       cliente: nombre.value.trim(),
       telefono: telefono.value.trim(),
       emailCliente: emailInput ? emailInput.value.trim() : "",
+      ciudad: ciudad.value.trim(),
       direccion: direccion.value.trim(),
       metodoPago: pago.value,
       detalleTexto,
       subtotalFmt: formatCOP(subtotal),
       ivaFmt: formatCOP(iva),
+      envioFmt,
       totalFmt: formatCOP(total)
     };
 
@@ -724,8 +789,10 @@ function initCheckoutForm() {
         <div style="background:#f8fafc; border:1px solid var(--border-color); padding:1rem; border-radius:8px; margin-bottom:1.15rem; font-size:0.92rem;">
           <p><strong>Cliente:</strong> ${datosPedido.cliente}</p>
           <p><strong>Teléfono / WhatsApp:</strong> ${datosPedido.telefono}</p>
+          <p><strong>Ciudad:</strong> ${datosPedido.ciudad}</p>
           <p><strong>Dirección de entrega / desvare:</strong> ${datosPedido.direccion}</p>
           <p><strong>Método de pago:</strong> ${datosPedido.metodoPago}</p>
+          <p><strong>Envío:</strong> ${datosPedido.envioFmt}</p>
           <p style="margin-top:0.5rem;"><strong>Detalle del pedido:</strong></p>
           <ul style="padding-left:1.2rem; list-style:disc; margin-bottom:0.5rem;">${resumenProductos}</ul>
           <p style="margin-top:0.5rem; font-size:1.1rem; color:var(--primary);"><strong>Total Pagado: ${datosPedido.totalFmt}</strong></p>
